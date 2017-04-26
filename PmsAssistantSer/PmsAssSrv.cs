@@ -8,17 +8,20 @@ using System.ServiceProcess;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace PmsAssistant
 {
-    public partial class Service1 : ServiceBase
+    public partial class PmsAssSrv : ServiceBase
     {
-        public Service1()
+        public PmsAssSrv()
         {
             InitializeComponent();
         }
 
         protected override void OnStart(string[] args)
         {
+            var ihotel = new Ihotel();
+            Task<bool> ret = ihotel.login();
         }
 
         protected override void OnStop()
