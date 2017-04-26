@@ -21,7 +21,7 @@ namespace PmsAssistant
         protected override void OnStart(string[] args)
         {
             var ihotel = new Ihotel();
-            Task<bool> ret = ihotel.login();
+            Task<bool> ret = ihotel.Login();
         }
 
         protected override void OnStop()
