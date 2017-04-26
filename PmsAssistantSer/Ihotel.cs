@@ -7,9 +7,11 @@ namespace PmsAssistant
 {
     public class Ihotel
     {
-        private static readonly string BASE_ADDRESS = "http://119.29.215.133:8090";
-        private static readonly string LOGIN = "http://119.29.215.133:8090/ipmsthef/loginCenter";
+        private const string BASE_ADDRESS = "http://119.29.215.133:8090";
+        private const string LOGIN = "http://119.29.215.133:8090/ipmsthef/loginCenter";
         private HttpClient httpClient;
+
+        private string logCode;
 
         public Ihotel()
         {
@@ -30,8 +32,12 @@ namespace PmsAssistant
             var response = await httpClient.PostAsync(LOGIN, content);
 
             //await异步
-            Console.WriteLine(await response.Content.ReadAsStringAsync());
-
+            var ret = await response.Content.ReadAsStringAsync();
+            if (ret.Contains("faultCode"))
+            {
+                return false;
+            }
+            logCode = ret;
             return true;
         }
     }

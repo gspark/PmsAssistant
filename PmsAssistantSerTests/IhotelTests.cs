@@ -12,10 +12,10 @@ namespace PmsAssistant.Tests
     public class IhotelTests
     {
         [TestMethod()]
-        public void loginTest()
+        public async Task loginTest()
         {
             var ihotel = new Ihotel();
-            ihotel.login().Wait();
+            var ret = await ihotel.login();
         }
     }
 }
