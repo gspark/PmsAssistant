@@ -15,7 +15,7 @@ namespace PmsAssistant.Tests
         public async Task loginTest()
         {
             var ihotel = new Ihotel();
-            var ret = await ihotel.login();
+            var ret = await ihotel.Login();
         }
     }
 }
