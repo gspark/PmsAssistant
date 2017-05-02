@@ -9,7 +9,7 @@ namespace PmsAssistant
     {
         private const string BaseAddress = "http://119.29.215.133:8090";
         private const string LogIn = "http://119.29.215.133:8090/ipmsthef/loginCenter";
-        private const string LogOut = "http://119.29.215.133:8090/ipmsthef/loginCenter";
+        private const string LogOut = "http://119.29.215.133:8090/ipmsthef/messagebroker/amf";
         private readonly HttpClient _httpClient;
 
         private string logCode;
@@ -25,7 +25,7 @@ namespace PmsAssistant
             {
                 {"password", "1234"},
                 {"userName", "MY"},
-                {"typeCode", "CQYSK-F"},
+                {"typeCode", "CQYSK-F"},//night
                 {"flex.messaging.request.language", "zh_CN"}
             });
 
