@@ -39,6 +39,9 @@
     <Reference Include="FluorineFx, Version=1.0.0.15, Culture=neutral, PublicKeyToken=1875756ba09931ab, processorArchitecture=MSIL">
       <HintPath>..\packages\fluorinefx.1.2.4\lib\net40\FluorineFx.dll</HintPath>
     </Reference>
+    <Reference Include="FluorineFX.Serialization, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\FluorineFX.Serialization.1.0.2\lib\FluorineFX.Serialization.dll</HintPath>
+    </Reference>
     <Reference Include="FluorineFx.ServiceBrowser, Version=1.0.0.15, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\fluorinefx.1.2.4\lib\net40\FluorineFx.ServiceBrowser.dll</HintPath>
     </Reference>
@@ -54,6 +57,9 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.ServiceProcess" />
     <Reference Include="System.Xml" />
+    <Reference Include="Xstream.Core, Version=1.0.4471.16137, Culture=neutral, PublicKeyToken=d3e5e2394d154db4, processorArchitecture=MSIL">
+      <HintPath>..\packages\XStream.1.0.44.2\lib\net40\Xstream.Core.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Ihotel.cs" />
