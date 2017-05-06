@@ -448,6 +448,8 @@ namespace PmsAssistant
             amfSerializer.WriteMessage(message);
             amfSerializer.Flush();
 
+
+            _httpClient.DefaultRequestHeaders.Add("content_type", "application/x-amf");
             //await异步等待回应
             var response = await _httpClient.PostAsync(Cookie, new ByteArrayContent(m.ToArray()));
             //await异步
