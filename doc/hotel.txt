@@ -1,0 +1,20 @@
+Form item: "typeCode" = "CQYSK-F"
+Form item: "type" = "LOGIN_TYPE_HOTEL"
+Form item: "flex.messaging.request.language" = "zh_CN"
+
+
+
+RemotingMessage 
+body[2] ASObject
+    18  "masterBase"
+        24  dep         datetime    {2017-5-5 6:00:00}
+        27  arr         datetime    {2017-5-4 10:00:00}
+        31  rsvMan      姓名        "张一一"
+        34  cutoffDate  datetime    {2017-5-4 12:00:00}
+    21  "masterGuest"
+        16  name2       string      "Zhang Yi Yi"
+        17  name        string      "张一一"
+        20  sex         string      "1"
+
+
+"faultCode=497;faultString=集团或酒店代码不存在;faultDetail=null;"

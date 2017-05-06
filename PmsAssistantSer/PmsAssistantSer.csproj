@@ -39,9 +39,6 @@
     <Reference Include="FluorineFx, Version=1.0.0.15, Culture=neutral, PublicKeyToken=1875756ba09931ab, processorArchitecture=MSIL">
       <HintPath>..\packages\fluorinefx.1.2.4\lib\net40\FluorineFx.dll</HintPath>
     </Reference>
-    <Reference Include="FluorineFX.Serialization, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\FluorineFX.Serialization.1.0.2\lib\FluorineFX.Serialization.dll</HintPath>
-    </Reference>
     <Reference Include="FluorineFx.ServiceBrowser, Version=1.0.0.15, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\fluorinefx.1.2.4\lib\net40\FluorineFx.ServiceBrowser.dll</HintPath>
     </Reference>

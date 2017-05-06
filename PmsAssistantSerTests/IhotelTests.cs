@@ -1,31 +1,13 @@
-﻿using FluorineFX.Serialization;
+﻿using FluorineFx;
+using FluorineFx.IO;
+using FluorineFx.Messaging.Messages;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.IO;
 using System.Threading.Tasks;
-using FluorineFx.IO;
-using FluorineFx.Messaging.Messages;
-using Xstream.Core;
 
 namespace PmsAssistant.Tests
 {
-    [AmfObject("PmsAssistant.Tests")]
-    public class CustomAmfObject
-    {
-        [AmfMember("bit_prop")]
-        public bool BooleanProperty { get; set; } = true;
-
-        [AmfMember]
-        public sbyte UnsignedByteProperty { get; set; } = 2;
-
-        public string StringProperty { get; set; } = "test";
-
-        [AmfMember("bit_fld")] public bool booleanField = false;
-        [AmfMember] public float singleField = -5.00065f;
-        public string stringField = "test2";
-
-        public CustomAmfObject() { }
-    }
 
     [TestClass()]
     public class IhotelTests
@@ -368,41 +350,41 @@ namespace PmsAssistant.Tests
                          "61 67 69 6e 67 2e 72 65 71 75 65 73 74 2e 6c 61" +
                          "6e 67 75 61 67 65 06 0b 7a 68 5f 43 4e 01";
 
-            byte[] bbb = this.strToToHexByte(aaa);
+            byte[] bbb = StrToToHexByte(aaa);
             FluorineFx.IO.AMFDeserializer ad = new FluorineFx.IO.AMFDeserializer(new MemoryStream(bbb));
+
             AMFMessage message = ad.ReadAMFMessage();
+
+            //string json = new System.Web.Script.Serialization.JavaScriptSerializer().Serialize(message);
+            ////Write that JSON to txt file
+            //File.WriteAllText(Environment.CurrentDirectory + @"\JSON.txt", json);
+
             foreach (var body in message.Bodies)
             {
-                object[] o = body.Content as object[];
-                RemotingMessage r = o[0] as RemotingMessage;
-            }
-       
-            FluorineFx.AMF3.ByteArray br = new FluorineFx.AMF3.ByteArray(new MemoryStream(bbb));
-            XStream ox = new XStream();
-            try
-            {
-                string xml = ox.ToXml(ad);
-                StreamWriter sw = new StreamWriter("Z:\\temp\\AMF3.xml", false);
-                sw.WriteLine(xml);
-                sw.Close();
-            }
-            catch (Exception e)
-            {
-                // ignored
+                object[] content = body.Content as object[];
+                RemotingMessage rm = content[0] as RemotingMessage;
+                object[] bodys = rm.body as object[];
+                ASObject ab = bodys[2] as ASObject;
+
+                ASObject masterBase = ab["masterBase"] as ASObject;
+                masterBase["dep"] = DateTime.Now;
+                masterBase["arr"] = DateTime.Now;
+                masterBase["rsvMan"] = "马一一";
+                masterBase["cutoffDate"] = DateTime.Now;
+
+                ASObject masterGuest = ab["masterGuest"] as ASObject;
+                masterGuest["name"] = "马一一";
+                masterGuest["name2"] = "Ma Yi Yi";
+                masterGuest["sex"] = "1";
             }
         }
 
         /// <summary>  
-
         /// 16进制字符串转字节数组  
-
         /// </summary>  
-
         /// <param name="hexString"></param>  
-
         /// <returns></returns>  
-
-        public byte[] strToToHexByte(string hexString)
+        public byte[] StrToToHexByte(string hexString)
         {
             hexString = hexString.Replace(" ", "");
             if ((hexString.Length % 2) != 0)
@@ -415,15 +397,15 @@ namespace PmsAssistant.Tests
         }
 
         [TestMethod()]
-        public void testAMF()
+        public async Task SaveReserveTest()
         {
-            CustomAmfObject customObject = new CustomAmfObject();
+            var ihotel = new Ihotel();
+            var ret = await ihotel.Login();
 
-            byte[] serializedBuffer = customObject.SerializeToAmf();
-
-            string hex = BitConverter.ToString(serializedBuffer).Replace("-", " ");
-
-            CustomAmfObject deserializedObject = serializedBuffer.DeserializeFromAmf<CustomAmfObject>();
+            ret = await ihotel.SaveReserve("马一一", 
+                Convert.ToDateTime("2017-05-08 06:00:00"), 
+                Convert.ToDateTime("2017-05-07 10:00:00"), 
+                Convert.ToDateTime("2017-05-07 12:00:00"));
         }
     }
 }
