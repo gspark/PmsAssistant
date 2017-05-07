@@ -6,11 +6,23 @@ Form item: "flex.messaging.request.language" = "zh_CN"
 
 RemotingMessage 
 body[2] ASObject
+    14  "rsvSrcList"
+            list[0]     KeyValuePair
+                2   {[negoRate, 268]}
+                6   {[arrDate, 2017-5-7 10:00:00]}
+                7   {[depDate, 2017-5-8 6:00:00]}
+                9   {[rsvArrDate, 2017-5-7 10:00:00]}
+                11  {[rsvDepDate, 2017-5-8 6:00:00]}
+                21  {[oldRate, 268]}
+                23  {[realRate, 268]}
+                28  {[rackRate, 268]}
+
     18  "masterBase"
         24  dep         datetime    {2017-5-5 6:00:00}
         27  arr         datetime    {2017-5-4 10:00:00}
         31  rsvMan      姓名        "张一一"
         34  cutoffDate  datetime    {2017-5-4 12:00:00}
+        99  remark      备注        "testtesttest"
     21  "masterGuest"
         16  name2       string      "Zhang Yi Yi"
         17  name        string      "张一一"
