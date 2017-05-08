@@ -27,7 +27,7 @@ namespace PmsAssistantSerTests
         public void loginAMF()
         {
             //parse(Ihotel.AMFHexString, "amf0");
-            parse(Ihotel.AMFHexString1, "amf1");
+            parse(Ihotel.AMFHexString, "amf1");
         }
 
         private void parse(string amf, string name)
@@ -98,7 +98,7 @@ namespace PmsAssistantSerTests
             var ihotel = new Ihotel();
             var ret = await ihotel.Login();
 
-            ret = await ihotel.SaveReserve("马一一",
+            ret = await ihotel.SaveReserve("马三",
                 Convert.ToDateTime("2017-05-10 06:00:00"),
                 Convert.ToDateTime("2017-05-09 10:00:00"),
                 Convert.ToDateTime("2017-05-09 12:00:00"));
