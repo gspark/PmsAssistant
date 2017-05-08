@@ -99,9 +99,9 @@ namespace PmsAssistantSerTests
             var ret = await ihotel.Login();
 
             ret = await ihotel.SaveReserve("马一一",
-                Convert.ToDateTime("2017-05-09 06:00:00"),
-                Convert.ToDateTime("2017-05-08 10:00:00"),
-                Convert.ToDateTime("2017-05-08 12:00:00"));
+                Convert.ToDateTime("2017-05-10 06:00:00"),
+                Convert.ToDateTime("2017-05-09 10:00:00"),
+                Convert.ToDateTime("2017-05-09 12:00:00"));
         }
     }
 }

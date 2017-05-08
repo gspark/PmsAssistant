@@ -635,19 +635,23 @@ namespace PmsAssistant
             var response = await _httpClient.PostAsync(Cookie + ";" + this.jsessionid,
             new ByteArrayContent(bys));
 
-            //var response = await _httpClient.PostAsync(Cookie + ";" + this.jsessionid,
-            //    new ByteArrayContent(StrToToHexByte(AMFHexString1)));
-
             //await异步
             var ret = await response.Content.ReadAsByteArrayAsync();
             var ad = new AMFDeserializer(new MemoryStream(ret));
             var message = ad.ReadAMFMessage();
+
+            response = await _httpClient.PostAsync(Cookie + ";" + this.jsessionid,
+                new ByteArrayContent(StrToToHexByte(AMFHexString1)));
+            ret = await response.Content.ReadAsByteArrayAsync();
+            ad = new AMFDeserializer(new MemoryStream(ret));
+            var message1 = ad.ReadAMFMessage();
+
             return true;
         }
 
         private byte[] GetSaveReserveBytes(string name, DateTime dep, DateTime arr, DateTime cutoffDate)
         {
-            var ad = new AMFDeserializer(new MemoryStream(StrToToHexByte(AMFHexString)));
+            var ad = new AMFDeserializer(new MemoryStream(StrToToHexByte(AMFHexString1)));
             var message = ad.ReadAMFMessage();
 
             foreach (var body in message.Bodies)
@@ -670,10 +674,10 @@ namespace PmsAssistant
 
                 ArrayCollection rsvSrcList = ab["rsvSrcList"] as ArrayCollection;
                 ASObject rsvObject = rsvSrcList[0] as ASObject;
-                rsvObject["arrDate"] = DateTime.Now;
-                rsvObject["depDate"] = DateTime.Now;
-                rsvObject["rsvArrDate"] = DateTime.Now;
-                rsvObject["rsvDepDate"] = DateTime.Now;
+                rsvObject["arrDate"] = arr;
+                rsvObject["depDate"] = dep;
+                rsvObject["rsvArrDate"] = arr;
+                rsvObject["rsvDepDate"] = dep;
                 rsvObject["negoRate"] = 268;
                 rsvObject["oldRate"] = 268;
                 rsvObject["realRate"] = 268;
