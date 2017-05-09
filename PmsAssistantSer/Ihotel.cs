@@ -312,6 +312,88 @@ namespace PmsAssistant
                                              "72 46 61 63 61 64 65 53 65 72 76 69 63 65 04 00";
 
 
+        public const string rateQuery = "00 03 00 00 00 01 00 04 6e 75 6c 6c 00 03 2f 37" +
+                                        "38 00 00 04 e9 0a 00 00 00 01 11 0a 81 13 4f 66" +
+                                        "6c 65 78 2e 6d 65 73 73 61 67 69 6e 67 2e 6d 65" +
+                                        "73 73 61 67 65 73 2e 52 65 6d 6f 74 69 6e 67 4d" +
+                                        "65 73 73 61 67 65 0d 73 6f 75 72 63 65 13 6f 70" +
+                                        "65 72 61 74 69 6f 6e 13 74 69 6d 65 73 74 61 6d" +
+                                        "70 11 63 6c 69 65 6e 74 49 64 17 64 65 73 74 69" +
+                                        "6e 61 74 69 6f 6e 13 6d 65 73 73 61 67 65 49 64" +
+                                        "15 74 69 6d 65 54 6f 4c 69 76 65 09 62 6f 64 79" +
+                                        "0f 68 65 61 64 65 72 73 01 06 13 72 61 74 65 51" +
+                                        "75 65 72 79 04 00 01 06 25 66 52 6f 6f 6d 46 61" +
+                                        "63 61 64 65 53 65 72 76 69 63 65 06 49 46 39 30" +
+                                        "30 43 32 32 36 2d 38 31 45 41 2d 35 30 41 44 2d" +
+                                        "36 33 41 43 2d 45 44 30 38 32 33 32 45 45 42 42" +
+                                        "30 04 00 09 07 01 01 01 0a 83 03 3f 63 6f 6d 2e" +
+                                        "67 72 65 65 6e 63 6c 6f 75 64 2e 64 74 6f 2e 52" +
+                                        "61 74 65 51 75 65 72 79 44 74 6f 13 72 6f 6f 6d" +
+                                        "43 6f 75 6e 74 19 72 6f 6f 6d 50 72 69 63 65 45" +
+                                        "6e 64 13 72 61 74 65 43 6f 64 65 73 13 67 75 65" +
+                                        "73 74 43 6f 64 65 0f 63 6f 72 43 6f 64 65 13 61" +
+                                        "67 65 6e 74 43 6f 64 65 15 63 65 6e 74 65 72 43" +
+                                        "6f 64 65 09 6e 65 67 6f 11 69 73 57 61 6c 6b 49" +
+                                        "6e 0b 69 73 41 64 64 07 64 65 70 07 61 72 72 19" +
+                                        "73 61 6c 65 73 43 68 61 6e 6e 65 6c 1d 69 73 47" +
+                                        "72 6f 75 70 43 6f 6d 70 61 6e 79 11 66 69 6c 6c" +
+                                        "54 79 70 65 13 67 75 65 73 74 4e 61 6d 65 0d 63" +
+                                        "61 72 64 4e 6f 19 64 61 74 65 44 61 79 43 6f 75" +
+                                        "6e 74 13 73 68 6f 77 50 72 69 63 65 0f 72 6d 74" +
+                                        "79 70 65 73 1b 63 68 69 6c 64 72 65 6e 43 6f 75" +
+                                        "6e 74 17 70 65 72 73 6f 6e 43 6f 75 6e 74 0f 68" +
+                                        "61 73 48 61 6c 74 1d 72 6f 6f 6d 50 72 69 63 65" +
+                                        "42 65 67 69 6e 04 00 01 01 01 01 01 01 01 06 03" +
+                                        "46 03 01 08 01 42 75 be ca 6b 50 00 00 01 02 06" +
+                                        "11 72 61 74 65 63 6f 64 65 01 01 04 01 06 0b 66" +
+                                        "69 72 73 74 01 01 01 01 01 0a 0b 01 15 44 53 45" +
+                                        "6e 64 70 6f 69 6e 74 01 09 44 53 49 64 06 07 6e" +
+                                        "69 6c 19 75 73 65 72 44 74 6f 42 79 74 65 73 0c" +
+                                        "89 61 78 da 85 94 dd 4e db 30 18 86 6f 05 f9 d8" +
+                                        "44 b6 53 a7 b1 7b 04 a5 40 35 a0 8c 96 49 68 9a" +
+                                        "90 13 1b ea 2d 7f 4a 52 7e 86 7a 38 06 93 76 b2" +
+                                        "1f ed 70 9a b4 3b d8 59 e1 76 ba 6a 47 dc c2 9c" +
+                                        "94 02 81 31 22 4b 51 9c 4f ef fb 7e cf e7 e4 44" +
+                                        "24 09 3f f1 63 a9 38 c0 00 4a 95 f9 a9 4e 72 0e" +
+                                        "fe bc fb 34 1e 7d 9b fc ba 98 5c 7c bf dd 6f 45" +
+                                        "1c e8 d5 38 57 01 80 5a 72 0c 03 9d e5 9d 54 aa" +
+                                        "94 a3 21 f4 f4 db 25 91 1b 25 82 70 7d 1e 51 b3" +
+                                        "e6 10 e2 e5 02 d0 17 59 5f 9b 42 60 03 d8 2f 24" +
+                                        "66 be cd e7 3b dd 67 f3 cb 15 f7 f7 1f c7 a3 d3" +
+                                        "df 97 5f 26 3f 47 e3 d1 e7 ab cb b3 f1 d7 d3 f1" +
+                                        "87 1f 93 f3 b3 ab cb f3 6a 9e a7 6a 4b af 95 34" +
+                                        "1e 24 6d c9 69 19 9b 56 73 df 56 54 22 ad 3c 96" +
+                                        "e8 71 ff 92 ca 3d f5 20 de d7 51 4f 87 6a 21 49" +
+                                        "ba 2a 3d 28 10 dc 00 62 73 98 f1 1a e6 88 82 db" +
+                                        "c2 66 a0 55 94 ff b7 ea 38 31 29 d7 3a 2b ed 8d" +
+                                        "dd de ce 66 6b 77 b5 d3 6b ad 01 38 c8 8c fa 89" +
+                                        "2f fc be 32 cd a2 1b e6 36 9c f6 b5 be 63 e6 90" +
+                                        "2a 33 a4 62 50 b9 f1 2a 5d 1c 63 31 4f ea 73 98" +
+                                        "f0 9a cd 31 9a 15 6d 17 72 60 61 69 bd bd 51 f4" +
+                                        "9c e4 cd 52 a5 bb bd d9 da 7a d1 ee 76 b6 a6 bb" +
+                                        "05 57 c4 18 54 a1 d0 01 07 00 aa a3 3c 15 cb 81" +
+                                        "d8 e7 00 fd e3 7a 30 93 f2 b1 5d 0e c6 f0 23 cc" +
+                                        "46 50 67 cb 83 c8 ef 26 ca d7 c2 68 f6 0c d9 6c" +
+                                        "55 04 86 8a 39 28 af 63 8f 83 c5 22 e7 1d d2 86" +
+                                        "8c ff a6 9b 8b 7c 90 71 b0 71 0d ea de 79 64 45" +
+                                        "8b d4 e5 94 00 18 c6 9e 0e 54 11 37 8c a5 de 3b" +
+                                        "ae 10 79 c8 7d 5a 34 25 52 60 8c 44 78 0d 34 11" +
+                                        "59 76 18 a7 92 03 17 4b 9f 79 d2 a3 44 a2 9a f4" +
+                                        "09 42 b6 23 3d e9 da d8 56 12 51 a3 92 f4 e3 a8" +
+                                        "f4 cc c4 c1 74 44 99 3a 2a 3e bd 21 34 12 65 7c" +
+                                        "1d 47 37 5f 24 29 46 11 87 c9 20 57 69 3b da 8b" +
+                                        "39 78 89 19 b1 b0 e3 5a 36 b6 30 ad 37 b0 c3 2c" +
+                                        "42 6b 16 41 b6 e5 e0 c6 ec 2d 35 b7 86 f1 37 d9" +
+                                        "39 93 b6 cb 1d e1 b9 bc e6 b8 5c 0a 6f 8f bb c4" +
+                                        "63 dc c3 58 35 30 a1 56 1d 59 b8 ee 58 84 38 af" +
+                                        "ee 1e f9 ea 31 7f 62 68 2e 71 2a 7f 03 18 0a 9f" +
+                                        "03 d6 a4 4d b7 c5 5c da 24 8b 60 38 fc 0b 7a 0f" +
+                                        "7e 5c 21 44 53 52 65 71 75 65 73 74 54 69 6d 65" +
+                                        "6f 75 74 04 84 58 3f 66 6c 65 78 2e 6d 65 73 73" +
+                                        "61 67 69 6e 67 2e 72 65 71 75 65 73 74 2e 6c 61" +
+                                        "6e 67 75 61 67 65 06 0b 7a 68 5f 43 4e 01";
+
+
         private string logCode;
 
         private string jsessionid;
@@ -361,25 +443,107 @@ namespace PmsAssistant
         {
             byte[] bys = GetSaveReserveBytes(name, dep, arr, cutoffDate);
 
+            return await Task(bys);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="arr">到达时间</param>
+        /// <returns></returns>
+        public async Task<bool> RateQuery(DateTime arr)
+        {
+            var ad = new AMFDeserializer(new MemoryStream(StrToToHexByte(rateQuery)));
+            var message = ad.ReadAMFMessage();
+
+            foreach (var body in message.Bodies)
+            {
+                object[] content = body.Content as object[];
+                RemotingMessage rm = content[0] as RemotingMessage;
+                rm.messageId = Guid.NewGuid().ToString("D");
+
+                object[] bodys = rm.body as object[];
+                ASObject ab = bodys[2] as ASObject;
+                ab["arr"] = arr;
+            }
+
+            var m = new MemoryStream();
+            AMFSerializer amfSerializer = new AMFSerializer(m);
+            amfSerializer.WriteMessage(message);
+            amfSerializer.Flush();
+            return await Task(m.ToArray());
+        }
+
+        public async Task<bool> Logout()
+        {
+            var content = new FormUrlEncodedContent(new Dictionary<string, string>()
+            {
+                {"password", "1234"},
+                {"userName", "MY"},
+                {"typeCode", "CQYSK-F"},
+                {"flex.messaging.request.language", "zh_CN"}
+            });
+
+            //await异步等待回应
+            var response = await _httpClient.PostAsync(LogOut, content);
+
+            //await异步
+            var ret = await response.Content.ReadAsStringAsync();
+            if (ret.Contains("faultCode"))
+            {
+                return false;
+            }
+            logCode = ret;
+            return true;
+        }
+
+        /// <summary>  
+        /// 16进制字符串转字节数组  
+        /// </summary>  
+        /// <param name="hexString"></param>  
+        /// <returns></returns>  
+        public byte[] StrToToHexByte(string hexString)
+        {
+            hexString = hexString.Replace(" ", "");
+            if ((hexString.Length % 2) != 0)
+                hexString += " ";
+            byte[] returnBytes = new byte[hexString.Length / 2];
+            for (int i = 0; i < returnBytes.Length; i++)
+                returnBytes[i] = Convert.ToByte(hexString.Substring(i * 2, 2).Trim(), 16);
+            return returnBytes;
+
+        }
+
+        private async Task<bool> Task(byte[] bys)
+        {
             //await异步等待回应
             var response = await _httpClient.PostAsync(Cookie + ";" + this.jsessionid,
-            new ByteArrayContent(bys));
+                new ByteArrayContent(bys));
 
             //await异步
             var ret = await response.Content.ReadAsByteArrayAsync();
             var ad = new AMFDeserializer(new MemoryStream(ret));
             var message = ad.ReadAMFMessage();
-            if (message.BodyCount <= 0)
+            if (message.BodyCount <= 0 && ad.FailedAMFBodies.Length == 0)
             {
                 return true;
             }
-
+            if (message.BodyCount > 0)
+            {
+                foreach (var body in message.Bodies)
+                {
+                    object[] content = body.Content as object[];
+                    RemotingMessage rm = content[0] as RemotingMessage;
+                    // 解析
+                }
+                return false;
+            }
             //response = await _httpClient.PostAsync(Cookie + ";" + this.jsessionid,
             //    new ByteArrayContent(StrToToHexByte(AMFHexString)));
             //ret = await response.Content.ReadAsByteArrayAsync();
             //ad = new AMFDeserializer(new MemoryStream(ret));
             //var message1 = ad.ReadAMFMessage();
-
+            message = this.ReadMessagex(ad);
             foreach (var body in message.Bodies)
             {
                 object[] content = body.Content as object[];
@@ -432,46 +596,6 @@ namespace PmsAssistant
             return m.ToArray();
         }
 
-        public async Task<bool> Logout()
-        {
-            var content = new FormUrlEncodedContent(new Dictionary<string, string>()
-            {
-                {"password", "1234"},
-                {"userName", "MY"},
-                {"typeCode", "CQYSK-F"},
-                {"flex.messaging.request.language", "zh_CN"}
-            });
-
-            //await异步等待回应
-            var response = await _httpClient.PostAsync(LogOut, content);
-
-            //await异步
-            var ret = await response.Content.ReadAsStringAsync();
-            if (ret.Contains("faultCode"))
-            {
-                return false;
-            }
-            logCode = ret;
-            return true;
-        }
-
-        /// <summary>  
-        /// 16进制字符串转字节数组  
-        /// </summary>  
-        /// <param name="hexString"></param>  
-        /// <returns></returns>  
-        public byte[] StrToToHexByte(string hexString)
-        {
-            hexString = hexString.Replace(" ", "");
-            if ((hexString.Length % 2) != 0)
-                hexString += " ";
-            byte[] returnBytes = new byte[hexString.Length / 2];
-            for (int i = 0; i < returnBytes.Length; i++)
-                returnBytes[i] = Convert.ToByte(hexString.Substring(i * 2, 2).Trim(), 16);
-            return returnBytes;
-
-        }
-
         private async Task<bool> InitAMF()
         {
             var ad = new AMFDeserializer(new MemoryStream(StrToToHexByte(AMF_INI)));
@@ -515,6 +639,65 @@ namespace PmsAssistant
                 }
             }
             return true;
+        }
+
+        private AMFMessage ReadMessagex(AMFDeserializer ad)
+        {
+            ad.Reset();
+            ad.BaseStream.Seek(0,SeekOrigin.Begin);
+            AMFMessage amfMessage = new AMFMessage(ad.ReadUInt16());
+            int num1 = (int)ad.ReadUInt16();
+            for (int index = 0; index < num1; ++index)
+                amfMessage.AddHeader(this.ReadHeader(ad));
+            int num2 = (int)ad.ReadUInt16();
+            for (int index = 0; index < num2; ++index)
+            {
+                AMFBody body = this.ReadBody(ad);
+                if (body != null)
+                    amfMessage.AddBody(body);
+            }
+            return amfMessage;
+        }
+
+        private AMFHeader ReadHeader(AMFDeserializer ad)
+        {
+            ad.Reset();
+            string name = ad.ReadString();
+            bool mustUnderstand = ad.ReadBoolean();
+            ad.ReadInt32();
+            object content = ad.ReadData();
+            return new AMFHeader(name, mustUnderstand, content);
+        }
+
+        private AMFBody ReadBody(AMFDeserializer ad)
+        {
+            ad.Reset();
+            string target = ad.ReadString();
+            string response = ad.ReadString();
+            int num = ad.ReadInt32();
+            object content;
+            AMFBody amfBody;
+            if (ad.BaseStream.CanSeek)
+            {
+                long position = ad.BaseStream.Position;
+                try
+                {
+                    content = ad.ReadData();
+                    amfBody = new AMFBody(target, response, content);
+                    Exception lastError = ad.LastError;
+                    if (lastError == null)
+                        return amfBody;
+                    return (AMFBody)null;
+                }
+                catch (Exception ex)
+                {
+                    ad.BaseStream.Position = position + (long)num;
+                    return (AMFBody)null;
+                }
+            }
+            content = ad.ReadData();
+            amfBody = new AMFBody(target, response, content);
+            return amfBody;
         }
     }
 }

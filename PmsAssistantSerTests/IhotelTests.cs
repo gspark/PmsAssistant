@@ -97,11 +97,25 @@ namespace PmsAssistantSerTests
         {
             var ihotel = new Ihotel();
             var ret = await ihotel.Login();
+            if (ret)
+            {
+                ret = await ihotel.SaveReserve("马四",
+                    Convert.ToDateTime("2017-05-11 06:00:00"),
+                    Convert.ToDateTime("2017-05-10 10:00:00"),
+                    Convert.ToDateTime("2017-05-10 12:00:00"));
+            }
+        }
 
-            ret = await ihotel.SaveReserve("马三",
-                Convert.ToDateTime("2017-05-10 06:00:00"),
-                Convert.ToDateTime("2017-05-09 10:00:00"),
-                Convert.ToDateTime("2017-05-09 12:00:00"));
+        [TestMethod()]
+        public async Task RateQueryTest()
+        {
+            var ihotel = new Ihotel();
+            var ret = await ihotel.Login();
+            if (ret)
+            {
+                ret = await ihotel.RateQuery(Convert.ToDateTime("2017-05-10 18:00:00"));
+            }
+
         }
     }
 }
