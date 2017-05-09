@@ -38,6 +38,53 @@ namespace PmsAssistant
                                        "56 65 72 73 69 6f 6e 04 01 09 44 53 49 64 06 07" +
                                        "6e 69 6c 01";
 
+        public const string loginAppById = "00 03 00 00 00 01 00 04 6e 75 6c 6c 00 02 2f 31" +
+                                           "00 00 02 bf 0a 00 00 00 01 11 0a 81 13 4f 66 6c" +
+                                           "65 78 2e 6d 65 73 73 61 67 69 6e 67 2e 6d 65 73" +
+                                           "73 61 67 65 73 2e 52 65 6d 6f 74 69 6e 67 4d 65" +
+                                           "73 73 61 67 65 0d 73 6f 75 72 63 65 13 6f 70 65" +
+                                           "72 61 74 69 6f 6e 0f 68 65 61 64 65 72 73 13 74" +
+                                           "69 6d 65 73 74 61 6d 70 11 63 6c 69 65 6e 74 49" +
+                                           "64 13 6d 65 73 73 61 67 65 49 64 09 62 6f 64 79" +
+                                           "17 64 65 73 74 69 6e 61 74 69 6f 6e 15 74 69 6d" +
+                                           "65 54 6f 4c 69 76 65 01 06 19 6c 6f 67 69 6e 41" +
+                                           "70 70 42 79 49 64 0a 0b 01 3f 66 6c 65 78 2e 6d" +
+                                           "65 73 73 61 67 69 6e 67 2e 72 65 71 75 65 73 74" +
+                                           "2e 6c 61 6e 67 75 61 67 65 06 0b 7a 68 5f 43 4e" +
+                                           "15 44 53 45 6e 64 70 6f 69 6e 74 01 09 44 53 49" +
+                                           "64 06 07 6e 69 6c 19 75 73 65 72 44 74 6f 42 79" +
+                                           "74 65 73 0c 01 21 44 53 52 65 71 75 65 73 74 54" +
+                                           "69 6d 65 6f 75 74 04 84 58 01 04 00 01 06 49 31" +
+                                           "36 35 34 36 33 44 42 2d 42 33 43 30 2d 35 34 41" +
+                                           "42 2d 45 32 30 30 2d 45 44 41 30 33 46 35 33 45" +
+                                           "43 31 38 09 05 01 0a 81 23 3d 63 6f 6d 2e 67 72" +
+                                           "65 65 6e 63 6c 6f 75 64 2e 64 74 6f 2e 4c 6f 67" +
+                                           "69 6e 41 70 70 44 74 6f 05 69 70 07 6d 61 63 13" +
+                                           "6c 6f 67 69 6e 54 79 70 65 1f 6c 6f 67 69 6e 54" +
+                                           "69 6d 65 43 6c 69 65 6e 74 15 63 6c 69 65 6e 74" +
+                                           "54 79 70 65 0f 61 70 70 54 79 70 65 19 63 6f 6d" +
+                                           "70 75 74 65 72 4e 61 6d 65 1b 6c 6f 67 69 6e 54" +
+                                           "79 70 65 43 6f 64 65 0b 74 6f 6b 65 6e 1b 72 75" +
+                                           "6e 54 69 6d 65 43 6c 69 65 6e 74 06 81 35 31 36" +
+                                           "39 2e 32 35 34 2e 32 30 38 2e 32 33 34 3b 31 36" +
+                                           "39 2e 32 35 34 2e 31 2e 31 30 37 3b 31 39 32 2e" +
+                                           "31 36 38 2e 35 32 2e 31 3b 31 39 32 2e 31 36 38" +
+                                           "2e 31 2e 34 3b 32 30 30 31 3a 30 3a 39 64 33 38" +
+                                           "3a 36 61 62 38 3a 34 31 32 3a 34 63 65 37 3a 35" +
+                                           "34 32 62 3a 33 63 62 65 06 81 09 30 32 30 30 34" +
+                                           "43 34 46 34 46 35 30 3b 34 41 35 41 42 36 37 36" +
+                                           "36 35 38 33 3b 30 30 35 30 35 36 43 30 30 30 30" +
+                                           "38 3b 34 38 35 41 42 36 37 36 36 35 38 33 3b 30" +
+                                           "30 30 30 30 30 30 30 30 30 30 30 30 30 45 30 06" +
+                                           "21 4c 4f 47 49 4e 5f 54 59 50 45 5f 48 4f 54 45" +
+                                           "4c 08 01 42 75 be da 03 f4 30 00 06 09 54 48 45" +
+                                           "46 01 06 01 06 0f 43 51 59 53 4b 2d 46 06 41 37" +
+                                           "61 38 30 36 38 64 37 31 32 38 37 34 37 30 38 61" +
+                                           "33 35 64 33 31 32 31 33 30 33 63 30 31 34 39 08" +
+                                           "01 42 75 be da 03 f4 30 00 06 03 31 06 27 73 73" +
+                                           "6f 41 70 70 46 61 63 61 64 65 53 65 72 76 69 63" +
+                                           "65 04 00";
+
         public const string AMFHexString = "00 03 00 00 00 01 00 04 6e 75 6c 6c 00 03 2f 34" +
                                              "38 00 00 10 eb 0a 00 00 00 01 11 0a 81 13 4f 66" +
                                              "6c 65 78 2e 6d 65 73 73 61 67 69 6e 67 2e 6d 65" +
@@ -394,7 +441,7 @@ namespace PmsAssistant
                                         "6e 67 75 61 67 65 06 0b 7a 68 5f 43 4e 01";
 
 
-        private string logCode;
+        private string token;
 
         private string jsessionid;
 
@@ -424,10 +471,10 @@ namespace PmsAssistant
                 return false;
             }
             // 还不知道这个返回值的作用
-            logCode = ret;
+            token = ret;
 
             await InitAMF();
-
+            await LoginAppById();
             return true;
         }
 
@@ -493,7 +540,7 @@ namespace PmsAssistant
             {
                 return false;
             }
-            logCode = ret;
+            token = ret;
             return true;
         }
 
@@ -563,6 +610,8 @@ namespace PmsAssistant
             {
                 object[] content = body.Content as object[];
                 RemotingMessage rm = content[0] as RemotingMessage;
+                rm.messageId = Guid.NewGuid().ToString("D");
+
                 object[] bodys = rm.body as object[];
                 ASObject ab = bodys[2] as ASObject;
 
@@ -615,6 +664,8 @@ namespace PmsAssistant
 
 
             _httpClient.DefaultRequestHeaders.Add("content_type", "application/x-amf");
+            _httpClient.DefaultRequestHeaders.Add("Referer", "app:/thef.swf");
+            _httpClient.DefaultRequestHeaders.Add("accept", "text/xml, application/xml, application/xhtml+xml, text/html;q=0.9, text/plain;q=0.8, text/css, image/png, image/jpeg, image/gif;q=0.8, application/x-shockwave-flash, video/mp4;q=0.9, flv-application/octet-stream;q=0.8, video/x-flv;q=0.7, audio/mp4, application/futuresplash, */*;q=0.5, application/x-mpegURL");
             //await异步等待回应
             var response = await _httpClient.PostAsync(Cookie, new ByteArrayContent(m.ToArray()));
             //await异步
@@ -637,6 +688,62 @@ namespace PmsAssistant
                         }
                     }
                 }
+            }
+            return true;
+        }
+
+        private async Task<bool> LoginAppById()
+        {
+            var ad = new AMFDeserializer(new MemoryStream(StrToToHexByte(loginAppById)));
+            var message = ad.ReadAMFMessage();
+
+            foreach (var body in message.Bodies)
+            {
+                object[] content = body.Content as object[];
+                RemotingMessage rm = content[0] as RemotingMessage;
+                rm.messageId = Guid.NewGuid().ToString("D");
+
+                object[] bodys = rm.body as object[];
+                ASObject ab = bodys[0] as ASObject;
+                ab["loginTimeClient"] = DateTime.Now;
+                ab["runTimeClient"] = ab["loginTimeClient"];
+                ab["token"] = token;
+            }
+
+            var m = new MemoryStream();
+            AMFSerializer amfSerializer = new AMFSerializer(m);
+            amfSerializer.WriteMessage(message);
+            amfSerializer.Flush();
+
+            //_httpClient.DefaultRequestHeaders.Add("content_type", "application/x-amf");
+            //await异步等待回应
+            var response = await _httpClient.PostAsync(Cookie + ";" + this.jsessionid,
+                new ByteArrayContent(m.ToArray()));
+            //await异步
+            var ret = await response.Content.ReadAsByteArrayAsync();
+            ad = new AMFDeserializer(new MemoryStream(ret));
+            message = ad.ReadAMFMessage();
+            if (message.BodyCount <= 0 && ad.FailedAMFBodies.Length == 0)
+            {
+                return true;
+            }
+            if (message.BodyCount > 0)
+            {
+                foreach (var body in message.Bodies)
+                {
+                    object[] content = body.Content as object[];
+                    RemotingMessage rm = content[0] as RemotingMessage;
+                    // 解析
+                }
+                return false;
+            }
+
+            message = this.ReadMessagex(ad);
+            foreach (var body in message.Bodies)
+            {
+                object[] content = body.Content as object[];
+                RemotingMessage rm = content[0] as RemotingMessage;
+                // 解析
             }
             return true;
         }
@@ -675,6 +782,11 @@ namespace PmsAssistant
             string target = ad.ReadString();
             string response = ad.ReadString();
             int num = ad.ReadInt32();
+            if (num == -1)
+            {
+                // 偏移4位
+                num = ad.ReadInt32();
+            }
             object content;
             AMFBody amfBody;
             if (ad.BaseStream.CanSeek)
@@ -682,7 +794,8 @@ namespace PmsAssistant
                 long position = ad.BaseStream.Position;
                 try
                 {
-                    content = ad.ReadData();
+                    //content = ad.ReadData();
+                    content = ad.ReadData(10);
                     amfBody = new AMFBody(target, response, content);
                     Exception lastError = ad.LastError;
                     if (lastError == null)
