@@ -7,6 +7,7 @@ using System.IO;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
+using System.Xml;
 using FluorineFx.AMF3;
 
 namespace PmsAssistant
@@ -782,21 +783,18 @@ namespace PmsAssistant
             string target = ad.ReadString();
             string response = ad.ReadString();
             int num = ad.ReadInt32();
-            if (num == -1)
-            {
-                // 偏移4位
-                num = ad.ReadInt32();
-            }
+
             object content;
             AMFBody amfBody;
             if (ad.BaseStream.CanSeek)
             {
+                ad.BaseStream.Seek(11, SeekOrigin.Current);
                 long position = ad.BaseStream.Position;
                 try
                 {
-                    //content = ad.ReadData();
-                    content = ad.ReadData(10);
-                    amfBody = new AMFBody(target, response, content);
+                    int count = ad.ReadInt16();
+                    byte[] b = ad.ReadBytes(count);
+                    amfBody = new AMFBody(target, response, b);
                     Exception lastError = ad.LastError;
                     if (lastError == null)
                         return amfBody;
