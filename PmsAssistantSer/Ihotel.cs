@@ -722,6 +722,16 @@ namespace PmsAssistant
                 new ByteArrayContent(m.ToArray()));
             //await异步
             var ret = await response.Content.ReadAsByteArrayAsync();
+
+            var pFileStream = new FileStream(@"z:\temp\hotel\loginAppById" + @".amf", 
+                FileMode.OpenOrCreate);
+
+            pFileStream.Write(ret, 0, ret.Length);
+            if (pFileStream != null)
+            {
+                pFileStream.Close();
+            }
+
             ad = new AMFDeserializer(new MemoryStream(ret));
             message = ad.ReadAMFMessage();
             if (message.BodyCount <= 0 && ad.FailedAMFBodies.Length == 0)
