@@ -35,15 +35,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="antlr.runtime, Version=2.7.6.2, Culture=neutral, PublicKeyToken=65e474d141e25e07, processorArchitecture=MSIL">
-      <HintPath>..\packages\fluorinefx.1.2.4\lib\net40\antlr.runtime.dll</HintPath>
-    </Reference>
-    <Reference Include="FluorineFx, Version=1.0.0.15, Culture=neutral, PublicKeyToken=1875756ba09931ab, processorArchitecture=MSIL">
-      <HintPath>..\packages\fluorinefx.1.2.4\lib\net40\FluorineFx.dll</HintPath>
-    </Reference>
-    <Reference Include="FluorineFx.ServiceBrowser, Version=1.0.0.15, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\fluorinefx.1.2.4\lib\net40\FluorineFx.ServiceBrowser.dll</HintPath>
-    </Reference>
     <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
       <HintPath>..\packages\log4net.1.2.10\lib\2.0\log4net.dll</HintPath>
     </Reference>
@@ -67,6 +58,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\FluorineFx\FluorineFx-4.0.csproj">
+      <Project>{A9B8375B-579D-4F8A-B00C-F2828DB58F3A}</Project>
+      <Name>FluorineFx-4.0</Name>
+    </ProjectReference>
     <ProjectReference Include="..\PmsAssistantSer\PmsAssistantSer.csproj">
       <Project>{83F7DDE9-466C-48DE-8B4E-D1C91798FE09}</Project>
       <Name>PmsAssistantSer</Name>

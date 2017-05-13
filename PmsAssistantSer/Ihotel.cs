@@ -9,6 +9,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Xml;
 using FluorineFx.AMF3;
+using FluorineFx.Configuration;
 
 namespace PmsAssistant
 {
@@ -449,6 +450,8 @@ namespace PmsAssistant
         public Ihotel()
         {
             _httpClient = new HttpClient() { BaseAddress = new Uri(BaseAddress) };
+            FluorineConfiguration.Instance.FluorineSettings.ClassMappings.Add(typeof(PmsAssistant.AcknowledgeMessageExt).FullName,
+                "DSK");
         }
 
         public async Task<bool> Login()
@@ -723,7 +726,7 @@ namespace PmsAssistant
             //await异步
             var ret = await response.Content.ReadAsByteArrayAsync();
 
-            var pFileStream = new FileStream(@"z:\temp\hotel\loginAppById" + @".amf", 
+            var pFileStream = new FileStream(@"loginAppById.amf", 
                 FileMode.OpenOrCreate);
 
             pFileStream.Write(ret, 0, ret.Length);

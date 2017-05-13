@@ -1,13 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using PmsAssistant;
+using System;
 using System.IO;
 using System.Threading.Tasks;
 using FluorineFx;
 using FluorineFx.AMF3;
 using FluorineFx.IO;
 using FluorineFx.Messaging.Messages;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using PmsAssistant;
 
 namespace PmsAssistantSerTests
 {

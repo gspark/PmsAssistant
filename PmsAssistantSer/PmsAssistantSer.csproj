@@ -33,15 +33,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="antlr.runtime, Version=2.7.6.2, Culture=neutral, PublicKeyToken=65e474d141e25e07, processorArchitecture=MSIL">
-      <HintPath>..\packages\fluorinefx.1.2.4\lib\net40\antlr.runtime.dll</HintPath>
-    </Reference>
-    <Reference Include="FluorineFx, Version=1.0.0.15, Culture=neutral, PublicKeyToken=1875756ba09931ab, processorArchitecture=MSIL">
-      <HintPath>..\packages\fluorinefx.1.2.4\lib\net40\FluorineFx.dll</HintPath>
-    </Reference>
-    <Reference Include="FluorineFx.ServiceBrowser, Version=1.0.0.15, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\fluorinefx.1.2.4\lib\net40\FluorineFx.ServiceBrowser.dll</HintPath>
-    </Reference>
     <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
       <HintPath>..\packages\log4net.1.2.10\lib\2.0\log4net.dll</HintPath>
     </Reference>
@@ -59,6 +50,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AbstractMessageExt .cs" />
+    <Compile Include="AcknowledgeMessageExt.cs" />
+    <Compile Include="App.cs" />
+    <Compile Include="AsyncMessageExt.cs" />
+    <Compile Include="Hotel.cs" />
+    <Compile Include="HotelGroup.cs" />
     <Compile Include="Ihotel.cs" />
     <Compile Include="PmsAssSrv.cs">
       <SubType>Component</SubType>
@@ -68,10 +65,18 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="User.cs" />
+    <Compile Include="UserDto.cs" />
+    <Compile Include="WorkStation.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FluorineFx\FluorineFx-4.0.csproj">
+      <Project>{A9B8375B-579D-4F8A-B00C-F2828DB58F3A}</Project>
+      <Name>FluorineFx-4.0</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
