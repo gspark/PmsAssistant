@@ -88,15 +88,13 @@ namespace PmsAssistant
                     if ((flags & CLIENT_ID_BYTES_FLAG) != 0)
                     {
                         clientIdBytes = ((ByteArray)input.ReadObject()).ToArray();
-                        //clientId = UUIDUtils.fromByteArray(clientIdBytes);
-                        clientId = System.Text.Encoding.UTF8.GetString(clientIdBytes);
+                        clientId = (new Guid(clientIdBytes)).ToString("D");
                     }
 
                     if ((flags & MESSAGE_ID_BYTES_FLAG) != 0)
                     {
                         messageIdBytes = ((ByteArray)input.ReadObject()).ToArray();
-                        //messageId = UUIDUtils.fromByteArray(messageIdBytes);
-                        messageId = System.Text.Encoding.UTF8.GetString(messageIdBytes);
+                        messageId = (new Guid(messageIdBytes)).ToString("D");
                     }
 
                     reservedPosition = 2;

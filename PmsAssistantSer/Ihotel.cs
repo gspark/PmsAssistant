@@ -1,4 +1,6 @@
 ﻿using FluorineFx;
+using FluorineFx.AMF3;
+using FluorineFx.Configuration;
 using FluorineFx.IO;
 using FluorineFx.Messaging.Messages;
 using System;
@@ -7,9 +9,8 @@ using System.IO;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
-using System.Xml;
-using FluorineFx.AMF3;
-using FluorineFx.Configuration;
+using com.greencloud.dto;
+using FluorineFx.Json;
 
 namespace PmsAssistant
 {
@@ -443,9 +444,11 @@ namespace PmsAssistant
                                         "6e 67 75 61 67 65 06 0b 7a 68 5f 43 4e 01";
 
 
-        private string token;
+        private string _token;
 
-        private string jsessionid;
+        private string _jsessionid;
+
+        private UserDto _userDto;
 
         public Ihotel()
         {
@@ -474,8 +477,8 @@ namespace PmsAssistant
             {
                 return false;
             }
-            // 还不知道这个返回值的作用
-            token = ret;
+
+            _token = ret;
 
             await InitAMF();
             await LoginAppById();
@@ -516,13 +519,58 @@ namespace PmsAssistant
                 object[] bodys = rm.body as object[];
                 ASObject ab = bodys[2] as ASObject;
                 ab["arr"] = arr;
+
+                var headers = rm.headers as ASObject;
+                ByteArray userDtoBytes1 = headers["userDtoBytes"] as ByteArray;
+                //test
+                if (null != userDtoBytes1)
+                {
+                    userDtoBytes1.Uncompress();
+                    var userDtoStr1 = userDtoBytes1.ReadUTFBytes(userDtoBytes1.Length);
+                }
+                UserDto ud = GetSimpleUserDto(this._userDto);
+                String udSrt = JavaScriptConvert.SerializeObject(ud);
+                ByteArray userDtoBytes = new ByteArray(System.Text.Encoding.UTF8.GetBytes(udSrt));
+                userDtoBytes.Compress();
+                // test
+                if (null != userDtoBytes)
+                {
+                    userDtoBytes.Uncompress();
+                    var userDtoStr = userDtoBytes.ReadUTFBytes(userDtoBytes.Length);
+                }
+                headers["userDtoBytes"] = userDtoBytes;
             }
 
             var m = new MemoryStream();
             AMFSerializer amfSerializer = new AMFSerializer(m);
             amfSerializer.WriteMessage(message);
             amfSerializer.Flush();
-            return await Task(m.ToArray());
+
+            //await异步等待回应
+            var response = await _httpClient.PostAsync(Cookie + ";" + this._jsessionid,
+                new ByteArrayContent(m.ToArray()));
+            //await异步
+            var ret = await response.Content.ReadAsByteArrayAsync();
+
+            ad = new AMFDeserializer(new MemoryStream(ret));
+            message = ad.ReadAMFMessage();
+            if (message.BodyCount <= 0 && ad.FailedAMFBodies.Length == 0)
+            {
+                return true;
+            }
+            if (message.BodyCount <= 0) return false;
+
+            foreach (var body in message.Bodies)
+            {
+                var dsk = body.Content as AcknowledgeMessageExt;
+                if (null == dsk) continue;
+                ArrayCollection bodys = dsk.body as ArrayCollection;
+                if (null == bodys) continue;
+                // TODO 列表
+                return true;
+            }
+
+            return false;
         }
 
         public async Task<bool> Logout()
@@ -544,7 +592,7 @@ namespace PmsAssistant
             {
                 return false;
             }
-            token = ret;
+            _token = ret;
             return true;
         }
 
@@ -568,7 +616,7 @@ namespace PmsAssistant
         private async Task<bool> Task(byte[] bys)
         {
             //await异步等待回应
-            var response = await _httpClient.PostAsync(Cookie + ";" + this.jsessionid,
+            var response = await _httpClient.PostAsync(Cookie + ";" + this._jsessionid,
                 new ByteArrayContent(bys));
 
             //await异步
@@ -589,18 +637,7 @@ namespace PmsAssistant
                 }
                 return false;
             }
-            //response = await _httpClient.PostAsync(Cookie + ";" + this.jsessionid,
-            //    new ByteArrayContent(StrToToHexByte(AMFHexString)));
-            //ret = await response.Content.ReadAsByteArrayAsync();
-            //ad = new AMFDeserializer(new MemoryStream(ret));
-            //var message1 = ad.ReadAMFMessage();
-            message = this.ReadMessagex(ad);
-            foreach (var body in message.Bodies)
-            {
-                object[] content = body.Content as object[];
-                RemotingMessage rm = content[0] as RemotingMessage;
-                // 解析
-            }
+ 
 
             return false;
         }
@@ -666,7 +703,6 @@ namespace PmsAssistant
             amfSerializer.WriteMessage(message);
             amfSerializer.Flush();
 
-
             _httpClient.DefaultRequestHeaders.Add("content_type", "application/x-amf");
             _httpClient.DefaultRequestHeaders.Add("Referer", "app:/thef.swf");
             _httpClient.DefaultRequestHeaders.Add("accept", "text/xml, application/xml, application/xhtml+xml, text/html;q=0.9, text/plain;q=0.8, text/css, image/png, image/jpeg, image/gif;q=0.8, application/x-shockwave-flash, video/mp4;q=0.9, flv-application/octet-stream;q=0.8, video/x-flv;q=0.7, audio/mp4, application/futuresplash, */*;q=0.5, application/x-mpegURL");
@@ -687,7 +723,7 @@ namespace PmsAssistant
                     {
                         if (s.Contains("JSESSIONID"))
                         {
-                            this.jsessionid = s;
+                            this._jsessionid = s;
                             return true;
                         }
                     }
@@ -711,7 +747,7 @@ namespace PmsAssistant
                 ASObject ab = bodys[0] as ASObject;
                 ab["loginTimeClient"] = DateTime.Now;
                 ab["runTimeClient"] = ab["loginTimeClient"];
-                ab["token"] = token;
+                ab["token"] = _token;
             }
 
             var m = new MemoryStream();
@@ -721,19 +757,19 @@ namespace PmsAssistant
 
             //_httpClient.DefaultRequestHeaders.Add("content_type", "application/x-amf");
             //await异步等待回应
-            var response = await _httpClient.PostAsync(Cookie + ";" + this.jsessionid,
+            var response = await _httpClient.PostAsync(Cookie + ";" + this._jsessionid,
                 new ByteArrayContent(m.ToArray()));
             //await异步
             var ret = await response.Content.ReadAsByteArrayAsync();
 
-            var pFileStream = new FileStream(@"loginAppById.amf", 
-                FileMode.OpenOrCreate);
+            //var pFileStream = new FileStream(@"loginAppById.amf", 
+            //    FileMode.OpenOrCreate);
 
-            pFileStream.Write(ret, 0, ret.Length);
-            if (pFileStream != null)
-            {
-                pFileStream.Close();
-            }
+            //pFileStream.Write(ret, 0, ret.Length);
+            //if (pFileStream != null)
+            //{
+            //    pFileStream.Close();
+            //}
 
             ad = new AMFDeserializer(new MemoryStream(ret));
             message = ad.ReadAMFMessage();
@@ -741,87 +777,141 @@ namespace PmsAssistant
             {
                 return true;
             }
-            if (message.BodyCount > 0)
-            {
-                foreach (var body in message.Bodies)
-                {
-                    object[] content = body.Content as object[];
-                    RemotingMessage rm = content[0] as RemotingMessage;
-                    // 解析
-                }
-                return false;
-            }
-
-            message = this.ReadMessagex(ad);
+            if (message.BodyCount <= 0) return false;
+            
             foreach (var body in message.Bodies)
             {
-                object[] content = body.Content as object[];
-                RemotingMessage rm = content[0] as RemotingMessage;
-                // 解析
+                var dsk = body.Content as AcknowledgeMessageExt;
+                if (null == dsk) continue;
+                UserDto ud = dsk.body as UserDto;
+                if (null == ud) continue;
+                _userDto = ud;
+                return true;
             }
-            return true;
+            
+            return false;
         }
 
-        private AMFMessage ReadMessagex(AMFDeserializer ad)
+        //    private AMFMessage ReadMessagex(AMFDeserializer ad)
+        //    {
+        //        ad.Reset();
+        //        ad.BaseStream.Seek(0,SeekOrigin.Begin);
+        //        AMFMessage amfMessage = new AMFMessage(ad.ReadUInt16());
+        //        int num1 = (int)ad.ReadUInt16();
+        //        for (int index = 0; index < num1; ++index)
+        //            amfMessage.AddHeader(this.ReadHeader(ad));
+        //        int num2 = (int)ad.ReadUInt16();
+        //        for (int index = 0; index < num2; ++index)
+        //        {
+        //            AMFBody body = this.ReadBody(ad);
+        //            if (body != null)
+        //                amfMessage.AddBody(body);
+        //        }
+        //        return amfMessage;
+        //    }
+
+        //    private AMFHeader ReadHeader(AMFDeserializer ad)
+        //    {
+        //        ad.Reset();
+        //        string name = ad.ReadString();
+        //        bool mustUnderstand = ad.ReadBoolean();
+        //        ad.ReadInt32();
+        //        object content = ad.ReadData();
+        //        return new AMFHeader(name, mustUnderstand, content);
+        //    }
+
+        //    private AMFBody ReadBody(AMFDeserializer ad)
+        //    {
+        //        ad.Reset();
+        //        string target = ad.ReadString();
+        //        string response = ad.ReadString();
+        //        int num = ad.ReadInt32();
+
+        //        object content;
+        //        AMFBody amfBody;
+        //        if (ad.BaseStream.CanSeek)
+        //        {
+        //            ad.BaseStream.Seek(11, SeekOrigin.Current);
+        //            long position = ad.BaseStream.Position;
+        //            try
+        //            {
+        //                int count = ad.ReadInt16();
+        //                byte[] b = ad.ReadBytes(count);
+        //                amfBody = new AMFBody(target, response, b);
+        //                Exception lastError = ad.LastError;
+        //                if (lastError == null)
+        //                    return amfBody;
+        //                return (AMFBody)null;
+        //            }
+        //            catch (Exception ex)
+        //            {
+        //                ad.BaseStream.Position = position + (long)num;
+        //                return (AMFBody)null;
+        //            }
+        //        }
+        //        content = ad.ReadData();
+        //        amfBody = new AMFBody(target, response, content);
+        //        return amfBody;
+        //    }
+
+        private UserDto GetSimpleUserDto(UserDto ud)
         {
-            ad.Reset();
-            ad.BaseStream.Seek(0,SeekOrigin.Begin);
-            AMFMessage amfMessage = new AMFMessage(ad.ReadUInt16());
-            int num1 = (int)ad.ReadUInt16();
-            for (int index = 0; index < num1; ++index)
-                amfMessage.AddHeader(this.ReadHeader(ad));
-            int num2 = (int)ad.ReadUInt16();
-            for (int index = 0; index < num2; ++index)
+            var ret = new UserDto();
+            ret.authCode = null;
+            ret.user = ud.user;
+            ret.cashier = ud.cashier;
+            ret.bizDate = ud.bizDate;
+            ret.loginTimeClient = ud.loginTimeClient.AddHours(8);
+            ret.loginTimeAppServer = ud.loginTimeAppServer.AddHours(8);
+            ret.loginType = ud.loginType;
+
+            if (ud.app != null)
             {
-                AMFBody body = this.ReadBody(ad);
-                if (body != null)
-                    amfMessage.AddBody(body);
+                ret.app = new com.greencloud.entity.App();
+
+                ret.app.id = ud.app.id;
+                ret.app.code = ud.app.code;
+                ret.app.descript = ud.app.descript;
+                ret.app.descriptEn = ud.app.descriptEn;
+                ret.app.createDatetime = ud.app.createDatetime.AddHours(8);
+                ret.app.modifyDatetime = ud.app.modifyDatetime.AddHours(8);
             }
-            return amfMessage;
-        }
-
-        private AMFHeader ReadHeader(AMFDeserializer ad)
-        {
-            ad.Reset();
-            string name = ad.ReadString();
-            bool mustUnderstand = ad.ReadBoolean();
-            ad.ReadInt32();
-            object content = ad.ReadData();
-            return new AMFHeader(name, mustUnderstand, content);
-        }
-
-        private AMFBody ReadBody(AMFDeserializer ad)
-        {
-            ad.Reset();
-            string target = ad.ReadString();
-            string response = ad.ReadString();
-            int num = ad.ReadInt32();
-
-            object content;
-            AMFBody amfBody;
-            if (ad.BaseStream.CanSeek)
+            if (ud.hotelGroup != null)
             {
-                ad.BaseStream.Seek(11, SeekOrigin.Current);
-                long position = ad.BaseStream.Position;
-                try
-                {
-                    int count = ad.ReadInt16();
-                    byte[] b = ad.ReadBytes(count);
-                    amfBody = new AMFBody(target, response, b);
-                    Exception lastError = ad.LastError;
-                    if (lastError == null)
-                        return amfBody;
-                    return (AMFBody)null;
-                }
-                catch (Exception ex)
-                {
-                    ad.BaseStream.Position = position + (long)num;
-                    return (AMFBody)null;
-                }
+                ret.hotelGroup = new com.greencloud.entity.HotelGroup();
+                ret.hotelGroup.id = ud.hotelGroup.id;
+                ret.hotelGroup.code = ud.hotelGroup.code;
+                ret.hotelGroup.descript = ud.hotelGroup.descript;
+                ret.hotelGroup.descriptEn = ud.hotelGroup.descriptEn;
+                ret.hotelGroup.createDatetime = ud.hotelGroup.createDatetime.AddHours(8);
+                ret.hotelGroup.modifyDatetime = ud.hotelGroup.modifyDatetime.AddHours(8);
             }
-            content = ad.ReadData();
-            amfBody = new AMFBody(target, response, content);
-            return amfBody;
+            if (ud.hotel != null)
+            {
+                ret.hotel = new com.greencloud.entity.Hotel();
+                ret.hotel.hotelGroupId = ud.hotelGroup.id;
+                ret.hotel.id = ud.hotel.id;
+                ret.hotel.code = ud.hotel.code;
+                ret.hotel.descript = ud.hotel.descript;
+                ret.hotel.descriptEn = ud.hotel.descriptEn;
+                ret.hotel.createDatetime = ud.hotel.createDatetime.AddHours(8);
+                ret.hotel.modifyDatetime = ud.hotel.modifyDatetime.AddHours(8);
+            }
+            if (ud.workStation != null)
+            {
+                ret.workStation = new com.greencloud.entity.WorkStation();
+                ret.workStation.hotelGroupId = ret.hotelGroup.id;
+                ret.workStation.hotelId = ret.hotel.id;
+                ret.workStation.id = ud.workStation.id;
+                ret.workStation.code = ud.workStation.code;
+                ret.workStation.descript = ud.workStation.descript;
+                ret.workStation.descriptEn = ud.workStation.descriptEn;
+                ret.workStation.mac = ud.workStation.mac;
+                ret.workStation.computerInfo = ud.workStation.computerInfo;
+                ret.workStation.createDatetime = ud.workStation.createDatetime.AddHours(8);
+                ret.workStation.modifyDatetime = ud.workStation.modifyDatetime.AddHours(8);
+            }
+            return ret;
         }
     }
 }
