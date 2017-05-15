@@ -192,11 +192,6 @@
     <Compile Include="Expression\StringLiteralNode.cs" />
     <Compile Include="Expression\UnaryOperator.cs" />
     <Compile Include="Expression\VariableNode.cs" />
-    <Compile Include="Gateway.aspx.cs">
-      <DependentUpon>Gateway.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Gateway.aspx.designer.cs" />
     <Compile Include="IO\ASObjectProxy.cs" />
     <Compile Include="IO\EntityObjectProxy.cs" />
     <Compile Include="IO\ExceptionProxy.cs" />
@@ -857,8 +852,5 @@
       <ProductName>Windows Installer 3.1</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Gateway.aspx" />
   </ItemGroup>
 </Project>
