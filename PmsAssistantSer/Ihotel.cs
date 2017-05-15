@@ -11,6 +11,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using com.greencloud.dto;
 using FluorineFx.Json;
+using NPinyin;
 
 namespace PmsAssistant
 {
@@ -654,6 +655,27 @@ namespace PmsAssistant
                 rm.messageId = Guid.NewGuid().ToString("D");
 
                 object[] bodys = rm.body as object[];
+
+                var headers = rm.headers as ASObject;
+                //ByteArray userDtoBytes1 = headers["userDtoBytes"] as ByteArray;
+                ////test
+                //if (null != userDtoBytes1)
+                //{
+                //    userDtoBytes1.Uncompress();
+                //    var userDtoStr1 = userDtoBytes1.ReadUTFBytes(userDtoBytes1.Length);
+                //}
+                UserDto ud = GetSimpleUserDto(this._userDto);
+                String udSrt = JavaScriptConvert.SerializeObject(ud);
+                ByteArray userDtoBytes = new ByteArray(System.Text.Encoding.UTF8.GetBytes(udSrt));
+                userDtoBytes.Compress();
+                //// test
+                //if (null != userDtoBytes)
+                //{
+                //    userDtoBytes.Uncompress();
+                //    var userDtoStr = userDtoBytes.ReadUTFBytes(userDtoBytes.Length);
+                //}
+                headers["userDtoBytes"] = userDtoBytes;
+
                 ASObject ab = bodys[2] as ASObject;
 
                 ASObject masterBase = ab["masterBase"] as ASObject;
@@ -664,7 +686,7 @@ namespace PmsAssistant
 
                 ASObject masterGuest = ab["masterGuest"] as ASObject;
                 masterGuest["name"] = name;
-                masterGuest["name2"] = "Ma San";
+                masterGuest["name2"] = Pinyin.GetPinyin(name).ToUpper();
                 masterGuest["sex"] = "1";
 
                 ArrayCollection rsvSrcList = ab["rsvSrcList"] as ArrayCollection;

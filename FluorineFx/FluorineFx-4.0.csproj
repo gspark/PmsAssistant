@@ -25,7 +25,7 @@
     <OldToolsVersion>3.5</OldToolsVersion>
     <UpgradeBackupLocation>
     </UpgradeBackupLocation>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile />
     <PublishUrl>http://localhost/FluorineFx/</PublishUrl>
     <Install>true</Install>
@@ -192,6 +192,11 @@
     <Compile Include="Expression\StringLiteralNode.cs" />
     <Compile Include="Expression\UnaryOperator.cs" />
     <Compile Include="Expression\VariableNode.cs" />
+    <Compile Include="Gateway.aspx.cs">
+      <DependentUpon>Gateway.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Gateway.aspx.designer.cs" />
     <Compile Include="IO\ASObjectProxy.cs" />
     <Compile Include="IO\EntityObjectProxy.cs" />
     <Compile Include="IO\ExceptionProxy.cs" />
@@ -793,6 +798,8 @@
     <Compile Include="__Res.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
     <None Include="services-config.xml" />
     <None Include="snk\fluorine.snk.readme" />
   </ItemGroup>
@@ -809,12 +816,10 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="antlr.runtime, Version=2.7.6.2, Culture=neutral, PublicKeyToken=65e474d141e25e07, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>Bin\net\4.0\antlr.runtime.dll</HintPath>
+      <HintPath>..\packages\fluorinefx.1.2.4\lib\net40\antlr.runtime.dll</HintPath>
     </Reference>
     <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>Bin\net\4.0\log4net.dll</HintPath>
+      <HintPath>..\packages\log4net.1.2.10\lib\2.0\log4net.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
@@ -852,5 +857,8 @@
       <ProductName>Windows Installer 3.1</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Gateway.aspx" />
   </ItemGroup>
 </Project>

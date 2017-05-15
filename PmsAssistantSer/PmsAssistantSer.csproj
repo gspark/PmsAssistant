@@ -22,6 +22,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -31,6 +32,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
@@ -78,6 +80,10 @@
     <ProjectReference Include="..\FluorineFx\FluorineFx-4.0.csproj">
       <Project>{A9B8375B-579D-4F8A-B00C-F2828DB58F3A}</Project>
       <Name>FluorineFx-4.0</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NPinyin\NPinyin.csproj">
+      <Project>{265ED519-5902-4798-A817-B8295C91DD8F}</Project>
+      <Name>NPinyin</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
